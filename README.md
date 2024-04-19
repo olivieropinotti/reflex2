@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Welcome to Reflex!
 
 This is the base Reflex template - installed when you run `reflex init`.
@@ -67,3 +68,6 @@ to organize your state.
 
 You can either define substates in their own files, or if the state is
 specific to a page, you can define it in the page file itself.
+=======
+# reflex2
+>>>>>>> 47e6106055cc0c2e6d7621a89de4e09438c8f155

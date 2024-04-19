@@ -1,0 +1,32 @@
+import reflex as rx
+from reflex2.templates import template
+from utils.user_management import UserState
+
+@template(route="/signup", title="Sign Up")
+def user_interface():
+    email = rx.input(placeholder="Email")
+    full_name = rx.input(placeholder="Full Name")
+    password = rx.input(input_type="password", placeholder="Password")
+    error_message = rx.text(lambda: UserState.error_message, color="red")
+
+    def register():
+        # Call the registration method directly inside the event handler
+        UserState.register_user(email.value, full_name.value, password.value)
+
+    def login():
+        # Call the login method directly inside the event handler
+        UserState.login_user(email.value, password.value)
+
+    return rx.vstack(
+        email,
+        full_name,
+        password,
+        rx.button("Register", on_click=UserState.register),  # Bind the register function directly
+        rx.button("Login", on_click=UserState.login),  # Bind the login function directly
+        rx.button("Logout", on_click=UserState.logout_user),  # Directly bind the logout function
+        error_message,
+        spacing="2"
+    )
+
+app = rx.App()
+app.add_page(user_interface)
